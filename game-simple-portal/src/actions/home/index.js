@@ -1,16 +1,16 @@
-//@PageListener(name="homeListener", entrypoint="true", fragmentUrlId="home"  )
+//@Action(name="homeAction", entrypoint="true", route="home"  )
 function Home() {
   var _this = this;
 
   //@Autowire
-  var homeHtmlTemplate;
+  var homePage;
 
   _this.homeButtonOnClick = function(e) {
     window.location = '#win'
   }
 
   _this.render = function() {
-    let frag = document.createRange().createContextualFragment(_this.homeHtmlTemplate.getHtml());
+    let frag = document.createRange().createContextualFragment(_this.homePage.getHtml());
     return frag;
   }
 

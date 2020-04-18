@@ -1,15 +1,15 @@
 {
-  "name": "lassie.js-demo",
+  "name": "linkstart.js-demos",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "lassiejs"
+    "dev": "linkstart"
   },
   "author": "jrichardsz",
   "license": "MIT",
   "dependencies": {
-    "lassiejs": "file:../lassiejs"
+    "linkstartjs": "github:linkstartjs/linkstartjs#master"
   }
 }
