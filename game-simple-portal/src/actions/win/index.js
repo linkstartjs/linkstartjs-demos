@@ -1,3 +1,5 @@
+var LinksStartJsDomUtil = require('linkstartjs-nerve-utils').LinksStartJsDomUtil
+
 //@Action(name="winAction", route="win"  )
 function Win() {
   var _this = this;
@@ -6,17 +8,15 @@ function Win() {
   var winPage;
 
   _this.render = function() {
-    let frag = document.createRange().createContextualFragment(_this.winPage.getHtml());
-    return frag;
+    return LinksStartJsDomUtil.render(_this.winPage);
   }
 
   _this.applyBindings = function() {
-    let backButton = document.getElementById("backButton");
-    backButton.onclick = _this.backButtonOnClick;
+    LinksStartJsDomUtil.applyActionBindings(_this.winPage, _this);
   }
 
-  _this.backButtonOnClick = function(e) {
-    window.location = ''
+  _this.backButtonAction = function(e) {
+    window.location = '#home'
   }
 }
 

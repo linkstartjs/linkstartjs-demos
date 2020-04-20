@@ -1,3 +1,5 @@
+var LinksStartJsDomUtil = require('linkstartjs-nerve-utils').LinksStartJsDomUtil
+
 //@Action(name="homeAction", entrypoint="true", route="home"  )
 function Home() {
   var _this = this;
@@ -5,18 +7,16 @@ function Home() {
   //@Autowire
   var homePage;
 
-  _this.homeButtonOnClick = function(e) {
+  _this.homeButtonAction = function(e) {
     window.location = '#win'
   }
 
   _this.render = function() {
-    let frag = document.createRange().createContextualFragment(_this.homePage.getHtml());
-    return frag;
+    return LinksStartJsDomUtil.render(_this.homePage);
   }
 
   _this.applyBindings = function() {
-    let homeButton = document.getElementById("homeButton");
-    homeButton.onclick = _this.homeButtonOnClick;
+    LinksStartJsDomUtil.applyActionBindings(_this.homePage, _this);
   }
 
 }
