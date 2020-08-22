@@ -1,10 +1,13 @@
 @DefaultAction(name="helloWorldAction", entrypoint="true", route="hello"  )
 function HelloWorldAction() {
 
-  this.onLoad = () => {
-    console.log("I'm the onLoad");
-  };
+  @Render
+  @Autowire(name="helloWorldPage")
+  this.page;
 
+  this.onLoad = () => {
+    console.log("onLoad: Hello World!!");
+  };
 
 }
 

@@ -1,0 +1,17 @@
+{
+  "name": "linkstart.js-demos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "linkstart"
+  },
+  "author": "jrichardsz",
+  "license": "MIT",
+  "dependencies": {
+    "linkstartjs": "file:../../linkstartjs",
+    "linkstartjs-nerve-utils": "github:linkstartjs/linkstartjs-nerve-utils#master",
+    "supervisor": "^0.12.0"
+  }
+}
