@@ -10,7 +10,6 @@
   "author": "jrichardsz",
   "license": "MIT",
   "dependencies": {
-    "linkstartjs": "file:../../linkstartjs",
-    "linkstartjs-nerve-utils": "github:linkstartjs/linkstartjs-nerve-utils#master"
+    "linkstartjs": "file:../../linkstartjs"
   }
 }

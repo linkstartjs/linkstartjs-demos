@@ -5,11 +5,8 @@ function HelloWorldAction() {
   @Autowire(name="helloWorldPage")
   this.page;
 
-  @HtmlElement(id="firstName")
-  this.firstNameInputTextElement;
-
-  @HtmlElement(id="lastName")
-  this.lastNameInputTextElement;
+  @HtmlElementsAllForOne
+  this.user;
 
   this.onLoad = () => {
     console.log("onLoad: Hello World!!");
@@ -18,8 +15,7 @@ function HelloWorldAction() {
   @ActionListener(tagId="sendButton", type="onclick")
   this.sendButtonListener = (e) => {
     console.log("You clicked me at:"+new Date());
-    console.log(this.firstNameInputTextElement.value);
-    console.log(this.lastNameInputTextElement.value);
+    console.log(this.user);
   };
 
 }
