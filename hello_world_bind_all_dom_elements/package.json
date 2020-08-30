@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "linkstart"
+    "dev": "linkstart dev",
+    "build": "linkstart build"
   },
   "author": "jrichardsz",
   "license": "MIT",
