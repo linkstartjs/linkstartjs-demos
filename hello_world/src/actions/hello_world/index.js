@@ -5,7 +5,6 @@ function HelloWorldAction() {
     console.log("I'm the onLoad");
   };
 
-
 }
 
 module.exports = HelloWorldAction;
