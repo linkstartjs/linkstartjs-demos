@@ -1,0 +1,16 @@
+{
+  "name": "linkstart.js-demos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "linkstart dev",
+    "build": "linkstart build"
+  },
+  "author": "jrichardsz",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "linkstartjs": "file:../../linkstartjs"
+  }
+}
