@@ -1,104 +1,86 @@
 
 ![logo](https://raw.githubusercontent.com/jrichardsz/static_resources/master/linkstart/linkstart-533X300.png)
 
-# click-counter example
+# Mobile Navigation Menu
 
-![image](home.png)
+![image](https://i.ibb.co/jZmW66r/Screenshot-from-2020-09-12-10-46-22.png)
 
-This example demonstrates how update dom element values using an @Action variable and a clean html @Page.
+This example demonstrates how create a simple hamburger menu. We need only two files:
 
-When the application starts, **ClickCounterAction** is invoked because it is marked as entrypoint `entrypoint="true"`
-
-LinkStart set the @Page instance into @Action because this action has been declared as @Autowire
+# Action
 
 ```js
-//@Autowire
-var liveExample;
-```
+@DefaultAction(name = "helloWorldAction", entrypoint = "true", route = "hello")
 
-When **ClickCounterAction** is invoked, `render()` and `applyBindings()` methods are executed.
+function HelloWorldAction() {
 
-**applyBindings()** is in charge of binding buttons to actions and dom elements to internal @Action variables: `spanDomElement, messageDomElement`
+  @Render
+  @Autowire(name = "helloWorldPage")
+  this.page;
 
+  @HtmlElement(id = "myLinks")
+  this.menuOptionsDivElement;
 
-```js
-LinksStartJsDomUtil.applyActionBindings(_this.liveExample, _this);
-_this.spanDomElement = LinksStartJsDomUtil.getModelElementById(_this.liveExample, "counter");
-_this.messageDomElement = LinksStartJsDomUtil.getModelElementById(_this.liveExample, "message");
-```
+  this.onLoad = () => {
+    console.log("onLoad: Hello World!!");
+  };
 
-**clickButtonAction()** is in charge of increase the click counter and show its value.
+  @ActionListener(tagId = "menuButton", type = "onclick")
+  this.menuButtonListener = (e) => {
+    console.log("show menu");
 
-**resetButtonAction()** is in charge of reset the click counter and show its value.
-
----
-
-Source code: @Page
-
-```html
-<!-- @Page("liveExample") -->
-<div class="liveExample">
-
-  <div>You've clicked <span id="counter" ls-model=true >0</span> times</div>
-
-  <input type="button" value="Click me" id="clickButton" ls-actionable=true >
-
-  <div style="display: none;" id="message" ls-model=true >
-    That's too many clicks! Please stop before you wear out your fingers.
-    <button id="resetButton" ls-actionable=true >Reset clicks</button>
-  </div>
-</div>
-```
-
-
-Source code: @Action
-
-```js
-var LinksStartJsDomUtil = require('linkstartjs-nerve-utils').LinksStartJsDomUtil
-
-//@Action(name="clickCounterAction", entrypoint="true", route="counter"  )
-function ClickCounterAction() {
-  var _this = this;
-
-  //@Autowire
-  var liveExample;
-
-  var counter=0;
-  var spanDomElement;
-  var messageDomElement;
-
-  _this.render = function() {
-    return LinksStartJsDomUtil.render(_this.liveExample);
-  }
-
-  _this.applyBindings = function() {
-    LinksStartJsDomUtil.applyActionBindings(_this.liveExample, _this);
-    _this.spanDomElement = LinksStartJsDomUtil.getModelElementById(_this.liveExample, "counter");
-    _this.messageDomElement = LinksStartJsDomUtil.getModelElementById(_this.liveExample, "message");
-  }
-
-  _this.clickButtonAction = function(e) {
-    counter++;
-    console.log(counter);
-    _this.spanDomElement.textContent=counter;
-
-    if(counter == 3){
-      _this.messageDomElement.style.display = "";
+    if(this.menuOptionsDivElement.style.display === '' || this.menuOptionsDivElement.style.display === "none"){
+      this.menuOptionsDivElement.style.display = "block"
+    }else if (this.menuOptionsDivElement.style.display === "block") {
+      this.menuOptionsDivElement.style.display = "none";
     }
-  }
 
-  _this.resetButtonAction = function(e) {html
-    counter = 0;
-    _this.spanDomElement.textContent=counter;
-    _this.messageDomElement.style.display = "none";
-  }
+  };
 
 }
 
-module.exports = ClickCounterAction;
+module.exports = HelloWorldAction;
+
 ```
 
-> Example from https://knockoutjs.com/examples/clickCounter.html
+# Page
 
-FROM:
-https://www.w3schools.com/howto/howto_js_mobile_navbar.asp
+```html
+@Page(name="helloWorldPage")
+<!-- Simulate a smartphone / tablet -->
+<div class="mobile-container">
+
+<!-- Top Navigation Menu -->
+<div class="topnav">
+  <a href="#home" class="active">Logo</a>
+  <div id="myLinks" ls-element=true  >
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+  <a id="menuButton" href="javascript:void(0);" class="icon" ls-element=true >
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<div style="padding-left:16px">
+  <h3>Vertical Mobile Navbar</h3>
+  <p>This example demonstrates how a navigation menu on a mobile/smart phone could look like.</p>
+  <p>Click on the hamburger menu (three bars) in the top right corner, to toggle the menu.</p>
+</div>
+
+<!-- End smartphone / tablet look -->
+</div>
+
+```
+
+Basically we need to bind the onclick event on action method and toggle visualization of some div using the classic `style.display`
+
+In the next example, I will show you how update another div, not only `id=root`
+
+> Example from https://www.w3schools.com/howto/howto_js_mobile_navbar.asp
+
+# Try your self!!
+
+- https://dev.to/ljcdev/easy-hamburger-menu-with-js-2do0
+- https://codepen.io/erikterwan/pen/EVzeRP
