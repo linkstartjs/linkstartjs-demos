@@ -1,0 +1,16 @@
+{
+  "name": "linkstart.js-demos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "linkstart dev",
+    "build": "linkstart build"
+  },
+  "author": "jrichardsz",
+  "license": "MIT",
+  "dependencies": {
+    "linkstartjs": "file:../../linkstartjs",
+    "popper.js": "^1.16.1"
+  }
+}
