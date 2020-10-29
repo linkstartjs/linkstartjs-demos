@@ -1,5 +1,1 @@
-(function() {
-  linkStart({
-    "logLevel" : "debug"
-  });
-})();
+linkStart({"logLevel":"debug"});
