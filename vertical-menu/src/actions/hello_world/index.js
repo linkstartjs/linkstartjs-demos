@@ -2,7 +2,6 @@
 
 function HelloWorldAction() {
 
-  @Render
   @Autowire(name = "helloWorldPage")
   this.page;
 
@@ -11,6 +10,10 @@ function HelloWorldAction() {
 
   this.onLoad = () => {
     console.log("onLoad: Hello World!!");
+  };
+
+  this.render = () => {
+    return "<h1>Hello World</h1>"
   };
 
   @ActionListener(tagId = "menuButton", type = "onclick")
