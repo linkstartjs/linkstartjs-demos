@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "linkstart dev",
-    "build": "linkstart build"
+    "build": "linkstart build",
+    "start": "linkstart start"
   },
   "author": "jrichardsz",
   "license": "MIT",
   "dependencies": {
     "linkstartjs": "file:../../linkstartjs"
+  },
+  "localDependencies": {
+    "linkstartjs": "github:linkstartjs/linkstartjs#1.0.0"
   }
 }
